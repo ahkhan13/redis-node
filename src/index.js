@@ -10,7 +10,7 @@ client.on('connect', () => console.log('Redis connected'));
 const getUser = async (req,res) => { 
     try{
     const user = await UserModel.find({});
-    //############ set data into redis cache ############
+    //############ set data into redis cache #########
     client.setEx('UserData', 120, JSON.stringify(user));
     return  res.send({normal_data : user});
     }catch(err){
